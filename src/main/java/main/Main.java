@@ -12,20 +12,21 @@ public class Main {
     }
 
     public static void startNewGame(Scanner gameScanner){
-
         System.out.println("Welcome, please enter your name: ");
         String name = gameScanner.nextLine();
+        if(name.length() < 1) name = "Player 1";
         User player1 = new User(name);
-        System.out.println("If you would like to play against a friend, press 1. Otherwise press 2");
+        System.out.println("Hi "+ player1.getName()+ ", would you like to play against a friend OR the computer? PRESS 1 to add another player or PRESS 2 to play against the computer");
         String choice = gameScanner.nextLine();
         if (choice.equals("1")) {
-            System.out.println("Alright player two, enter your name:");
+            System.out.println("Ok...player two, enter your name:");
             String name2 = gameScanner.nextLine();
+            if(name2.length() < 1 ) name2 = "Player 2";
             User player2 = new User(name2);
             Play newGame = new Play(player1, player2);
             newGame.startTwoPlayers(player1, player2);
         } else {
-            System.out.println("Alright, you want to play the computer here we go!");
+            System.out.println("Alright, you chose to play the computer. Here we go!");
             Computer computer = new Computer("Computer");
             Play newGame = new Play(player1, computer);
             newGame.startComputer(player1, computer);
@@ -39,11 +40,4 @@ public class Main {
         System.out.println("Alright " + player2.getName() + " , it's your turn to go first");
 
     }
-
-    public static void keepPlayingComputer(User player1, Computer computer){
-
-    }
-
-
-
 }

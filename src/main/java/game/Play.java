@@ -22,14 +22,14 @@ public class Play extends Game implements Logic{
     static Scanner gameScanner = new Scanner(System.in);
 
     public void startTwoPlayers(User player1, User player2){
-        System.out.println("Ok, time to enter your choice...rock (R), paper (P), or scissors(S)???");
+        System.out.println("Ok, " + player1.getName() + ", it's your turn...rock (R), paper (P), or scissors (S)?");
         while(!gameScanner.hasNext("[RPS]")){
             System.out.println("Please enter a R, P, or S");
             gameScanner.next();
         }
         String player1choice = gameScanner.next();
 
-        System.out.println("Ok,"+ player2.getName() + " time to enter your choice...rock (R), paper (P), or scissors(S)???");
+        System.out.println("Ok,"+ player2.getName() + " , it's your turn...rock (R), paper (P), or scissors (S)?");
         while(!gameScanner.hasNext("[RPS]")){
             System.out.println("Please enter a R, P, or S");
             gameScanner.next();
@@ -45,7 +45,7 @@ public class Play extends Game implements Logic{
 
     public void startComputer(User player1, Computer computer){
         Scanner gameScanner = new Scanner(System.in);
-        System.out.println("Ok...rock (R), paper (P), or scissors(S)???");
+        System.out.println("Ok "+ player1.getName() + " it's your turn,...rock (R), paper (P), or scissors(S)?");
         while(!gameScanner.hasNext("[RPS]")){
             System.out.println("Please enter a R, P, or S");
             gameScanner.next();
@@ -82,11 +82,16 @@ public class Play extends Game implements Logic{
             }
         }
         System.out.println("Would you like to play again?");
+        while(!gameScanner.hasNext("[YN]")){
+            System.out.println("Please enter a Y or N");
+            gameScanner.next();
+        }
         String answer = gameScanner.next();
         if(answer.equals("Y")){
             keepPlayingComputer(player1, computer);
         }
         else{
+            System.out.println("Thanks for playing!");
             this.keepPlaying = false;
         }
     }

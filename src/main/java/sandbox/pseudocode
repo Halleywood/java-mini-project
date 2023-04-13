@@ -1,0 +1,48 @@
+Classes:
+Player Class --> User, Computer subclasses. Is Player abstract? Only making instances of User and Computer so maybe.
+    - String name
+    - Collection scores
+    - Choice choice (or String choice) debating on if I need any functionality there
+    - Methods: take input from Scanner to set name, default score 0 and default choice none or optional?
+        -input name sets constructor??
+        -will player input instantiate Piece class? It could.
+        -Computer subclass will have seperate functionality for choosing Piece randomly.
+Piece Class --> Rock, Paper, Scissors
+    -String name
+    -HashMap that contains other pieces and points associated with them?
+        Like Scissors map ={ rock: 1, paper: 0} ?
+Game Class --> could hold most of the logic, like main menu, accepts the players and their pieces?
+    -HashmapScoreBoard scoreboard: {player win :#, computer win: #, draws: #}
+    -ArrayList<String> scoreHistory: keeps track of who won with what play?
+    -Methods:
+        -Constructor takes in two Players??? Instantiates a game.
+        -method to set and change scores.
+Logic Interface
+      -optional method for player/player
+      -optional method for computer/player
+      -method for increasing player scores and scoreboard?
+
+-method to queue the main menu? Takes that input to instantiate two players?
+-then something needs to take in the two inputs and do something with them like perform the game logic.
+-once a winner/loser has been determined, update plyer scores and scoreboard?
+-main menu pops up again: play again? Home screen where you can see scoreboard...play again or reset game.
+
+//main menu:
+press 1. to play me
+press 2. to play a friend
+press 3. to go to home or something
+
+presses 1 to play computer.
+ENTER YOUR NAME: --> = new Player("name")
+triggers Computer constructor to create new computer constructor.
+once you have two players, instantiate a game? Game takes two players as params everything else is default?
+PLAYER 1 PICK R P S --> new Piece("rock") or new Rock() ??
+Computer randomly generates a pick
+once second input, fires method to take in both and compare
+    -if pieces are objects, can call rock.score.get(otherpiecename) or something.
+    - then you only have to use one hashmap of player 1? and no if checks.
+results in a winner, a loser, one score update, and scoreboard update
+queues main menu again where you can play again or go to home screen
+ - home screen then has options to play again, or rest game and start over, while being able to see scoreboard.
+
+

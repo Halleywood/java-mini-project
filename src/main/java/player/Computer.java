@@ -11,7 +11,7 @@ public class Computer extends Player implements ComputerLogic{
         super(name);
     }
 
-    public Optional <Piece> choosePiece(){
+    public void choosePiece(){
         String[] types = {"R", "P", "S"};
         Random randomNum = new Random();
         int randomNumber = randomNum.nextInt(0, 2);
@@ -19,7 +19,6 @@ public class Computer extends Player implements ComputerLogic{
         Piece newPiece = new Piece(types[randomNumber]);
         Optional<Piece> newOP = Optional.of(newPiece);
         this.setPiece(newOP);
-        return newOP;
     }
 
 }

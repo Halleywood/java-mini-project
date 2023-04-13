@@ -8,7 +8,6 @@ public interface Logic {
     void startTwoPlayers(User player1, User player2);
     void startComputer(User player1, Computer computer);
     void determineWinner(User player1, Computer computer);
-
     void determineWinner2Players(User player1, User player2);
    static void updateScores(){
         //gets winner, updates player scores and game scoreboard accordingly.

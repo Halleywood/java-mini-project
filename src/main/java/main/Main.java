@@ -3,12 +3,16 @@ package main;
 import game.Play;
 import player.Computer;
 import player.User;
-
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner gameScanner = new Scanner(System.in);
+        startNewGame(gameScanner);
+    }
+
+    public static void startNewGame(Scanner gameScanner){
+
         System.out.println("Welcome, please enter your name: ");
         String name = gameScanner.nextLine();
         User player1 = new User(name);
@@ -27,6 +31,19 @@ public class Main {
             newGame.startComputer(player1, computer);
         }
     }
+
+    public static void keepPlayingTwoPlayers(User player1, User player2, Scanner gameScanner){
+        if(player1.getScore() % 2 == 1){
+            System.out.println("Alright " + player1.getName() + " , it's your turn to go first");
+        }
+        System.out.println("Alright " + player2.getName() + " , it's your turn to go first");
+
+    }
+
+    public static void keepPlayingComputer(User player1, Computer computer){
+
+    }
+
 
 
 }

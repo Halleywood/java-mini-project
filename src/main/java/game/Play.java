@@ -4,14 +4,14 @@ import pieces.Piece;
 import player.Computer;
 import player.User;
 
-import java.util.Collection;
-import java.util.Optional;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
 public class Play extends Game implements Logic{
 
+    private Boolean keepPlaying = true;
+
     public Play(User player1, User player2){
+
         super(player1, player2);
     }
 
@@ -19,8 +19,9 @@ public class Play extends Game implements Logic{
         super(player1, computer);
     }
 
+    static Scanner gameScanner = new Scanner(System.in);
+
     public void startTwoPlayers(User player1, User player2){
-        Scanner gameScanner = new Scanner(System.in);
         System.out.println("Ok, time to enter your choice...rock (R), paper (P), or scissors(S)???");
         while(!gameScanner.hasNext("[RPS]")){
             System.out.println("Please enter a R, P, or S");
@@ -65,18 +66,29 @@ public class Play extends Game implements Logic{
         Integer computerScore = computer.getPiece().get().getScoreTable().get(player1Type);
 
         if(player1Score < computerScore){
-            System.out.println(player1.getName()+ "wins!");
-            //update score
+            System.out.println(player1.getName()+ " wins!");
+            updateScore(player1);
         }
         else if( player1Score.equals(computerScore)){
             System.out.println("its a draw!?");
         }
         else{
             System.out.println("the computer wins =(");
-            //update score
+            if(this.getScoreBoard().containsKey(computer.getName())){
+                this.getScoreBoard().put(computer.getName(), this.getScoreBoard().get(computer.getName())+1);
+            }
+            else{
+                this.getScoreBoard().put(computer.getName(), 1);
+            }
         }
         System.out.println("Would you like to play again?");
-
+        String answer = gameScanner.next();
+        if(answer.equals("Y")){
+            keepPlayingComputer(player1, computer);
+        }
+        else{
+            this.keepPlaying = false;
+        }
     }
 
     public void determineWinner2Players(User player1, User player2){
@@ -88,16 +100,53 @@ public class Play extends Game implements Logic{
 
         if(player1Score < player2Score){
             System.out.println(player1.getName()+ " wins!");
-            //update score
+            updateScore(player1);
         }
         else if( player1Score.equals(player2Score)){
             System.out.println("its a draw!?");
         }
         else{
             System.out.println(player2.getName() + " wins!");
-            //update score
+            updateScore(player2);
         }
         System.out.println("Would you like to play again?");
+        String answer = gameScanner.next();
+        if(answer.equals("Y")){
+            keepPlayingTwoPlayers(player1, player2);
+        }
+        else{
+            this.keepPlaying = false;
+        }
+    }
 
+    public void keepPlayingTwoPlayers(User player1, User player2){
+        while(this.keepPlaying){
+            System.out.println(this.getScoreBoard());
+        if(player1.getScore() % 2 == 1){
+            System.out.println("Alright " + player1.getName() + " , it's your turn to go first");
+            startTwoPlayers(player1, player2);
+        }
+        else{
+            System.out.println("Alright " + player2.getName() + " , it's your turn to go first");
+            startTwoPlayers(player2, player1);
+        }
+        }
+    }
+
+    public void keepPlayingComputer(User player1, Computer computer){
+        while(this.keepPlaying){
+            System.out.println(this.getScoreBoard());
+            startComputer(player1, computer);
+        }
+    }
+
+    public void updateScore(User player){
+        if(this.getScoreBoard().containsKey(player.getName())){
+            this.getScoreBoard().put(player.getName(), this.getScoreBoard().get(player.getName())+1);
+        }
+        else{
+            this.getScoreBoard().put(player.getName(), 1);
+        }
+        player.setScore(player.getScore()+1);
     }
 }

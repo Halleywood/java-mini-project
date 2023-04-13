@@ -11,7 +11,7 @@ public class Game{
     private Computer computer;
     private HashMap<String, Integer> scoreBoard = new HashMap<>();
 
-    public Game(){};
+
     public Game(User user1, User user2){
         this.player1 = user1;
         this.player2 = user2;

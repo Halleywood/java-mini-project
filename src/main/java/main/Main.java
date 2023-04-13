@@ -7,10 +7,18 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        //calls startGame function and feeds method an instance of a Scanner to get user input
         Scanner gameScanner = new Scanner(System.in);
         startNewGame(gameScanner);
     }
 
+    //gets user input, input is validated so if nothing is entered will default to Player 1...same for if user chooses to play with second
+    //player, if nothing entered will default to "player 2"
+    //once user has decided to play with friend, this method instantiates both User objects and calls Play(User, User) constructor
+    //then has access to "startTwoPlayers" method in Play object.
+
+    //If user selects to play computer in ELSE statement, this method instantiates a Computer object and a Play(User, Computer) constructor method.
+    //then has access to "startComputer" method in Play object.
     public static void startNewGame(Scanner gameScanner){
         System.out.println("Welcome, please enter your name: ");
         String name = gameScanner.nextLine();
@@ -31,13 +39,5 @@ public class Main {
             Play newGame = new Play(player1, computer);
             newGame.startComputer(player1, computer);
         }
-    }
-
-    public static void keepPlayingTwoPlayers(User player1, User player2, Scanner gameScanner){
-        if(player1.getScore() % 2 == 1){
-            System.out.println("Alright " + player1.getName() + " , it's your turn to go first");
-        }
-        System.out.println("Alright " + player2.getName() + " , it's your turn to go first");
-
     }
 }

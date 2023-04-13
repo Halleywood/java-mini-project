@@ -6,11 +6,12 @@ import java.util.Random;
 
 public class Computer extends Player implements ComputerLogic{
 
-    public Computer(){}
     public Computer(String name){
         super(name);
     }
 
+    //random number chosen for an index of 0-2 for types array. Initializes new Piece object of that random type
+    //under Computer's Piece attribute.
     public void choosePiece(){
         String[] types = {"R", "P", "S"};
         Random randomNum = new Random();

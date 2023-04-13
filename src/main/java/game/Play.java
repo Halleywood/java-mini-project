@@ -11,7 +11,6 @@ public class Play extends Game implements Logic{
     private Boolean keepPlaying = true;
 
     public Play(User player1, User player2){
-
         super(player1, player2);
     }
 
@@ -20,7 +19,7 @@ public class Play extends Game implements Logic{
     }
 
     static Scanner gameScanner = new Scanner(System.in);
-
+    //see Logic
     public void startTwoPlayers(User player1, User player2){
         System.out.println("Ok, " + player1.getName() + ", it's your turn...rock (R), paper (P), or scissors (S)?");
         while(!gameScanner.hasNext("[RPS]")){
@@ -42,7 +41,7 @@ public class Play extends Game implements Logic{
         player2.choosePiece(player2choice);
         determineWinner2Players(player1, player2);
     }
-
+    //see Logic
     public void startComputer(User player1, Computer computer){
         Scanner gameScanner = new Scanner(System.in);
         System.out.println("Ok "+ player1.getName() + " it's your turn,...rock (R), paper (P), or scissors(S)?");
@@ -57,7 +56,7 @@ public class Play extends Game implements Logic{
         System.out.println("The computer chose " + computer.getPiece().get().getType());
         determineWinner(player1, computer);
     }
-
+    //see Logic
     public void determineWinner(User player1, Computer computer){
         String player1Type = player1.getPiece().map(Piece::getType).orElse("");
         String computerType = computer.getPiece().map(Piece::getType).orElse("");
@@ -95,7 +94,7 @@ public class Play extends Game implements Logic{
             this.keepPlaying = false;
         }
     }
-
+    //see Logic
     public void determineWinner2Players(User player1, User player2){
         String player1T = player1.getPiece().map(Piece::getType).orElse("");
         String player2Type = player2.getPiece().map(Piece::getType).orElse("");
@@ -123,7 +122,9 @@ public class Play extends Game implements Logic{
             this.keepPlaying = false;
         }
     }
-
+    //if User enters yes in determineWinner method, calls this which will continuously call itself while this.keepPlaying
+    //is true. If in determineWinner method, user enters NO, sets this.keepPlaying to false and keepPlaying method will break
+    //out of while loop.
     public void keepPlayingTwoPlayers(User player1, User player2){
         while(this.keepPlaying){
             System.out.println(this.getScoreBoard());
@@ -144,7 +145,7 @@ public class Play extends Game implements Logic{
             startComputer(player1, computer);
         }
     }
-
+//see Logic
     public void updateScore(User player){
         if(this.getScoreBoard().containsKey(player.getName())){
             this.getScoreBoard().put(player.getName(), this.getScoreBoard().get(player.getName())+1);

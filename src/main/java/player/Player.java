@@ -1,14 +1,13 @@
 package player;
 import pieces.Piece;
-
 import java.util.Optional;
 
 public class Player {
+    //Made Player class to hold all attributes/getters/setters so User and Computer had better readability.
     private String name;
     private int score;
     private Optional<Piece> piece = Optional.empty();
 
-    public Player() {}
     public Player(String name){
         this.name = name;
         this.score = 0;

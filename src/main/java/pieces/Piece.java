@@ -4,9 +4,8 @@ import java.util.HashMap;
 
 public class Piece extends RPSLogic{
     private String type;
-    private HashMap<String, Integer> scoreTable;
+    private final HashMap<String, Integer> scoreTable;
 
-    public Piece() {}
     public Piece(String type) {
         this.type = type;
         this.scoreTable = setTheScoreTable(type);

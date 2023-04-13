@@ -1,16 +1,13 @@
-package sandbox;
+package main;
 
 import game.Play;
 import player.Computer;
-import player.Player;
 import player.User;
-import game.Game;
 
 import java.util.Scanner;
 
-public class Test {
+public class Main {
     public static void main(String[] args) {
-
         Scanner gameScanner = new Scanner(System.in);
         System.out.println("Welcome, please enter your name: ");
         String name = gameScanner.nextLine();
@@ -25,7 +22,7 @@ public class Test {
             newGame.startTwoPlayers(player1, player2);
         } else {
             System.out.println("Alright, you want to play the computer here we go!");
-            Computer computer = new Computer();
+            Computer computer = new Computer("Computer");
             Play newGame = new Play(player1, computer);
             newGame.startComputer(player1, computer);
         }

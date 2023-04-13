@@ -13,7 +13,6 @@ public class User extends Player{
                 Piece newPiece = new Piece(input);
                 Optional <Piece> newOP = Optional.of(newPiece);
                 this.setPiece(newOP);
-                System.out.println(this.getPiece());
         }
 }
 

@@ -38,11 +38,9 @@ public class Play extends Game implements Logic {
             gameScanner.next();
         }
         String player2choice = gameScanner.next();
-
-        System.out.println(player1.getName() + " chose " + player1choice);
         player1.choosePiece(player1choice);
-        System.out.println(player2.getName() + " chose " + player2choice);
         player2.choosePiece(player2choice);
+        System.out.println("💥💥💥" + player1.getName()+ " you played "+ player1choice + " and " + player2.getName() + " you played " + player2choice + "💥💥💥");
         determineWinner2Players(player1, player2);
     }
 
@@ -94,9 +92,7 @@ public class Play extends Game implements Logic {
         }
         else{
             this.keepPlaying = false;
-            System.out.println("Thanks for playing! 🪨📃✂️");
-            Scanner newS = new Scanner(System.in);
-            Main.startNewGame(newS);
+            Menu.endMenu();
 
         }
     }
@@ -120,15 +116,18 @@ public class Play extends Game implements Logic {
             updateScore(player2);
         }
         System.out.println("Would you like to play again?");
+        while(!gameScanner.hasNext("[YN]")){
+            System.out.println("Please enter a Y or N");
+            gameScanner.next();
+        }
         String answer = gameScanner.next();
         if(answer.equals("Y")){
             keepPlayingTwoPlayers(player1, player2);
         }
         else{
             this.keepPlaying = false;
-            Scanner newS = new Scanner(System.in);
-            Main.startNewGame(newS);
-            System.out.println("Thanks for playing! 🪨📃✂️");
+            Menu.endMenu();
+
         }
     }
     //if User enters yes in determineWinner method, calls this which will continuously call itself while this.keepPlaying
@@ -137,7 +136,7 @@ public class Play extends Game implements Logic {
     public void keepPlayingTwoPlayers(User player1, User player2){
         while(this.keepPlaying){
             Menu.scoreBoard();
-            System.out.println("        "+ this.getScoreBoard());
+            System.out.println("       "+ this.getScoreBoard());
         if(player1.getScore() % 2 == 1){
             System.out.println("Alright " + player1.getName() + ", it's your turn to go first");
             startTwoPlayers(player1, player2);
@@ -152,7 +151,7 @@ public class Play extends Game implements Logic {
     public void keepPlayingComputer(User player1, Computer computer){
         while(this.keepPlaying){
             Menu.scoreBoard();
-            System.out.println("        "+ this.getScoreBoard());
+            System.out.println("       "+ this.getScoreBoard());
             startComputer(player1, computer);
         }
     }

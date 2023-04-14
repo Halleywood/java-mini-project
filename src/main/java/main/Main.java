@@ -23,21 +23,25 @@ public class Main {
         Menu newMenu = new Menu();
         newMenu.printHeader();
         System.out.println("Welcome, please enter your name: ");
-        String name = gameScanner.nextLine();
+        String name = gameScanner.next();
         if(name.length() < 1) name = "Player 1";
         User player1 = new User(name);
         System.out.println("Hi, "+ player1.getName());
         System.out.println("PRESS 1: Play with a friend");
         System.out.println("PRESS 2: Play against the computer");
-        String choice = gameScanner.nextLine();
+        while (!gameScanner.hasNext("[12]")) {
+            System.out.println("Please enter a 1 or 2");
+            gameScanner.next();
+        }
+        String choice = gameScanner.next();
         if (choice.equals("1")) {
             System.out.println("Ok...player two, enter your name:");
-            String name2 = gameScanner.nextLine();
+            String name2 = gameScanner.next();
             if(name2.length() < 1 ) name2 = "Player 2";
             User player2 = new User(name2);
             Play newGame = new Play(player1, player2);
             newGame.startTwoPlayers(player1, player2);
-        } else {
+        } else if(choice.equals("2")){
             System.out.println("Alright, you chose to play the computer. Here we go!");
             Computer computer = new Computer("Computer");
             Play newGame = new Play(player1, computer);

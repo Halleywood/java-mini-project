@@ -20,11 +20,15 @@ public class Main {
     //If user selects to play computer in ELSE statement, this method instantiates a Computer object and a Play(User, Computer) constructor method.
     //then has access to "startComputer" method in Play object.
     public static void startNewGame(Scanner gameScanner){
+        Menu newMenu = new Menu();
+        newMenu.printHeader();
         System.out.println("Welcome, please enter your name: ");
         String name = gameScanner.nextLine();
         if(name.length() < 1) name = "Player 1";
         User player1 = new User(name);
-        System.out.println("Hi "+ player1.getName()+ ", would you like to play against a friend OR the computer? PRESS 1 to add another player or PRESS 2 to play against the computer");
+        System.out.println("Hi, "+ player1.getName());
+        System.out.println("PRESS 1: Play with a friend");
+        System.out.println("PRESS 2: Play against the computer");
         String choice = gameScanner.nextLine();
         if (choice.equals("1")) {
             System.out.println("Ok...player two, enter your name:");

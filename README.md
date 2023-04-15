@@ -8,5 +8,5 @@
 
 ### Development Process:
 * I wanted to create as many classes as possible to really practice my OOP skills. 
-    **  I made the Player class, that had User and Computer subclasses. 
-    **  I created a Play class where the actual game was played, that inherited from Game. 
+1.  I made the Player class, that had User and Computer subclasses. 
+2.  I created a Play class where the actual game was played, that inherited from Game. 

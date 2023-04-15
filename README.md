@@ -24,3 +24,6 @@
 ### Challenges and Overcoming Them 
 * I created a "Piece" class, that held the choice type of Rock, Paper, or Scissors. Once a User or Computer object selected a choice it instantiated the Piece inside the Player class. So I had access to the Piece through the players. It was difficult to try and incorporate a Class within a Class and unneccessarily used Optionals, but it made good practice and eventually I was able to access the type of the piece through the players! 
 * I used a hashmap in each Piece that held a score. Each piece had a different set of scores because if it is Paper, Scissors hold a higher point value and Rocks hold none. But if it is a Scissor, then Paper would hold no point value and Rocks would have the highest. So based on the players choice I could compare points. I wanted to do this instead of a dozen if/else checks. I think it makes for cleaner code and it works pretty nice! 
+
+### Curious about how it works? 
+ * Fork this repository, download the files in your favorite Java IDE and run the Main class where the main method is! Have Fun! 🪨📃✂️
